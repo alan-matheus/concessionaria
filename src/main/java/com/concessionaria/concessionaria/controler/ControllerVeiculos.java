@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import javax.validation.Valid;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
@@ -19,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.concessionaria.concessionaria.model.Categoria;
 import com.concessionaria.concessionaria.model.Veiculos;
+import com.concessionaria.concessionaria.repository.RepositoryCategoria;
 import com.concessionaria.concessionaria.repository.RepositoryVeiculos;
 
 @Controller
@@ -30,6 +35,9 @@ public class ControllerVeiculos {
     @Autowired
     RepositoryVeiculos repository;
 
+    @Autowired
+    RepositoryCategoria repositoryCategoria;
+    
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String inicio() {
         return "index";
@@ -67,8 +75,13 @@ public class ControllerVeiculos {
 	}
 
     @RequestMapping(value = "adm/veiculos/cadastro", method = RequestMethod.GET)
-    public String save(){
-        return "adm/veiculos/cadastro";
+    public ModelAndView save(Veiculos veiculos){
+        ModelAndView mv = new ModelAndView("adm/veiculos/cadastro");
+        List<Categoria> categoria = repositoryCategoria.findAll();
+        mv.addObject("veiculos", veiculos);
+        mv.addObject("categoria", categoria);
+        
+        return mv;
     }
 
     @RequestMapping(value = "/adm/veiculos/cadastro", method = RequestMethod.POST)

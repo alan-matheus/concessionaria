@@ -101,7 +101,7 @@
 							<td th:text="${veiculos.modelo}"></td>
 							<td th:text="${veiculos.ano}"></td>
 							<td th:text="${veiculos.valor}"></td>
-							<td th:text="${veiculos.id_categoria}"></td>
+							<td th:text="${veiculos.id_categoria.nome}"></td>
 							<td><img th:src="@{../../img/{img}(img=${veiculos.imagem})}" width="100"/></td> 
 
 							<td colspan="2"><a class="btn btn-info btn-sm"

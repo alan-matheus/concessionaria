@@ -1,16 +1,19 @@
 package com.concessionaria.concessionaria.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="veiculos")
-public class Veiculos {
+public class Veiculos  implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +35,8 @@ public class Veiculos {
     private int ano;
 
     @NotNull
-    private int id_categoria;
+    @ManyToOne
+    private Categoria id_categoria;
 
     @NotNull
     private double valor;
@@ -40,6 +44,9 @@ public class Veiculos {
     private String imagem;
 
     
+    public Veiculos(){
+        super();
+    }
     
 
     public String getImagem() {
@@ -98,11 +105,11 @@ public class Veiculos {
         this.ano = ano;
     }
 
-    public int getId_categoria() {
+    public Categoria getId_categoria() {
         return id_categoria;
     }
 
-    public void setId_categoria(int id_categoria) {
+    public void setId_categoria(Categoria id_categoria) {
         this.id_categoria = id_categoria;
     }
 
