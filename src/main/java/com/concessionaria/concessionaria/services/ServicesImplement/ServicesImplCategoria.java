@@ -16,7 +16,7 @@ public class ServicesImplCategoria implements ServicesCategoria {
     }
 
     @Override
-    public Categoria findById(int id) {
+    public Categoria findById(long id) {
     
         return repository.findById(id).get();
     }
@@ -28,7 +28,7 @@ public class ServicesImplCategoria implements ServicesCategoria {
     }
 
     @Override
-    public Categoria deleteById(int id) {
+    public Categoria deleteById(long id) {
         
         return deleteById(id);
     }

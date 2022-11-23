@@ -53,7 +53,8 @@ public class ControllerVeiculos {
 	public ModelAndView getVeiculos() {
 		ModelAndView mv = new ModelAndView("adm/veiculos/lista");
 		List<Veiculos> veiculos = repository.findAll();
-		
+		List<Categoria> categoria = repositoryCategoria.findAll();
+        mv.addObject("categoria", categoria);
 		mv.addObject("veiculos", veiculos);
 		return mv;
 	}
@@ -121,6 +122,8 @@ public class ControllerVeiculos {
     public ModelAndView update(@PathVariable("id") long id){
         ModelAndView mv = new ModelAndView("/adm/veiculos/update");
         Optional<Veiculos> veiculos = repository.findById(id);
+        List<Categoria> categoria = repositoryCategoria.findAll();
+        mv.addObject("categoria", categoria);
         mv.addObject("id_veiculos", veiculos.get().getId_veiculos());
         mv.addObject("placa", veiculos.get().getPlaca());
         mv.addObject("cor", veiculos.get().getCor());
@@ -129,14 +132,14 @@ public class ControllerVeiculos {
         mv.addObject("ano", veiculos.get().getAno());
         mv.addObject("id_categoria", veiculos.get().getId_categoria());
         mv.addObject("valor", veiculos.get().getValor());
-        mv.addObject("imagem", veiculos.get().getImagem());
+        
 
+                
         return mv;
     }
 
     @RequestMapping (value="/adm/veiculos/update/{id}", method=RequestMethod.POST)
-    public String updatePost(Veiculos veiculos, @RequestParam("file") MultipartFile imagem){
-        
+    public String updatePost(Veiculos veiculos){
         Veiculos carregando = repository.findById(veiculos.getId_veiculos()).orElse(null);
         
         carregando.setPlaca(veiculos.getPlaca());
@@ -147,6 +150,27 @@ public class ControllerVeiculos {
         carregando.setId_categoria(veiculos.getId_categoria());
         carregando.setValor(veiculos.getValor());
 
+        
+        repository.save(carregando); 
+
+        return "redirect:/adm/veiculos/lista";
+
+    }
+
+    @RequestMapping (value="/adm/veiculos/update-img/{id}", method=RequestMethod.GET)
+    public ModelAndView updateImg(@PathVariable("id") long id){
+        ModelAndView mv = new ModelAndView("/adm/veiculos/update-img");
+        Optional<Veiculos> veiculos = repository.findById(id);
+        mv.addObject("id_veiculos", veiculos.get().getId_veiculos());
+        mv.addObject("imagem", veiculos.get().getImagem());
+
+        return mv;
+    }
+
+    @RequestMapping (value="/adm/veiculos/update-img/{id}", method=RequestMethod.POST)
+    public String updateImg(Veiculos veiculos, @RequestParam("file") MultipartFile imagem){
+        Veiculos carregando = repository.findById(veiculos.getId_veiculos()).orElse(null);
+        
         try {
             
             if(!imagem.isEmpty()){
@@ -160,8 +184,11 @@ public class ControllerVeiculos {
             System.out.println("erro na imagem, tente novamente");
         }
 
-        repository.save(carregando); 
         
+
+        repository.save(carregando); 
+
+          
         
         return "redirect:/adm/veiculos/lista";
 

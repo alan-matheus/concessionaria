@@ -1,19 +1,19 @@
 package com.concessionaria.concessionaria.model;
 
-import java.io.Serializable;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="veiculos")
-public class Veiculos  implements Serializable{
+public class Veiculos  {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,7 +35,8 @@ public class Veiculos  implements Serializable{
     private int ano;
 
     @NotNull
-    @ManyToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     private Categoria id_categoria;
 
     @NotNull
@@ -44,11 +45,6 @@ public class Veiculos  implements Serializable{
     private String imagem;
 
     
-    public Veiculos(){
-        super();
-    }
-    
-
     public String getImagem() {
         return imagem;
     }

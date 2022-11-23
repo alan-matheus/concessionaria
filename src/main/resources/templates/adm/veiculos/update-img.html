@@ -93,60 +93,15 @@
 
 			<div class="container" id="cadastro">
 				<form enctype="multipart/form-data" method="post">
-					<div class="form-row">
-						<!-- <input type="hidden" th:value="${id_veiculos}" th:field="*{id_veiculos}" name="id_veiculos" > -->
-						<div class="form-group col-md-6">
-							<label>Placa</label> 
-                                <input type="text" th:value="${placa}" class="form-control" placeholder="Placa" autofocus="autofocus"  name="placa" />
-							<div class="invalid-feedback"></div>
-						</div>
-						<div class="form-group col-md-6">
-							<label>Cor</label> <input type="text"
-								class="form-control" placeholder="Cor" th:value="${cor}" name="cor" />
-							<div class="invalid-feedback"></div>
-						</div>
-					</div>
 					
 					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label>Marca</label> <input type="text"
-								class="form-control" placeholder="Marca"
-								autofocus="autofocus" th:value="${marca}" name="marca" />
-							<div class="invalid-feedback"></div>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="salario">Valor</label> <input type="number"
-								class="form-control" placeholder="Valor de Venda" th:value="${valor}"
-								 name="valor" />
-							<div class="invalid-feedback"></div>
-						</div>
-					</div>
-                    <div class="form-row">
                         <div class="form-group col-md-6">
-							<label>Modelo</label> <input type="text"
-								class="form-control" placeholder="Modelo"
-								autofocus="autofocus" th:value="${modelo}" name="modelo" />
-							<div class="invalid-feedback"></div>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="salario">Ano</label> <input type="number"
-								class="form-control" placeholder="Ano" th:value="${ano}"
-								 name="ano" />
-							<div class="invalid-feedback"></div>
-						</div>
+							<div class="form-group col-md-12">
+                                <input placeholder="Escolha uma imagem" type="file"  name="file" />
+                            </div>
+                        </div>
 					</div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-							<label>Categoria</label> <select name="id_categoria"
-							class="form-control" id="id_categoria"> 
-							<option th:each="cat: ${categoria}" th:selected="${cat.id_categoria == id_categoria.getId_categoria()}" th:value="${cat.id_categoria}" th:text="${cat.nome}" ></option>
-							
-							</select>
-							<div class="invalid-feedback"></div>
-						</div>
-                    </div>
 					<input type="hidden" th:value="${id_veiculos}" name="id_veiculos" >
-					
 					
 					<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 				</form>

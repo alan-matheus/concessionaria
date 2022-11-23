@@ -5,7 +5,7 @@ import com.concessionaria.concessionaria.model.Categoria;
 
 public interface ServicesCategoria {
     List<Categoria> findAll();
-    Categoria findById(int id);
+    Categoria findById(long id);
     Categoria save(Categoria categoria);
-    Categoria deleteById(int id);
+    Categoria deleteById(long id);
 }

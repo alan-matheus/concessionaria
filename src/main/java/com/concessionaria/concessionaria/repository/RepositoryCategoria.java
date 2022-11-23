@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.concessionaria.concessionaria.model.Categoria;
 
 @Repository
-public interface RepositoryCategoria extends JpaRepository<Categoria, Integer> {
+public interface RepositoryCategoria extends JpaRepository<Categoria, Long> {
     
 }

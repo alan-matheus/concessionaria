@@ -101,21 +101,26 @@
 							<td th:text="${veiculos.modelo}"></td>
 							<td th:text="${veiculos.ano}"></td>
 							<td th:text="${veiculos.valor}"></td>
-							<td th:text="${veiculos.id_categoria.nome}"></td>
+							<td th:text="${veiculos.id_categoria.getNome()}"></td>
+							
 							<td><img th:src="@{../../img/{img}(img=${veiculos.imagem})}" width="100"/></td> 
 
-							<td colspan="2"><a class="btn btn-info btn-sm"
+							<td>
+								<a class="btn btn-info btn-sm"
 								th:href="@{/adm/veiculos/update/{id}(id=${veiculos.id_veiculos})}"
 								role="button"> <span class="oi oi-brush" title="Editar"
 									aria-hidden="true"></span>
-							</td>
-							
-							</a> 
-							<td>
+								</a> 
+								<a class="btn btn-info btn-sm"
+								th:href="@{/adm/veiculos/update-img/{id}(id=${veiculos.id_veiculos})}"
+								role="button"> <span class="oi oi-brush" title="Editar Imagem"
+									aria-hidden="true"></span>
+								</a> 
 								<a class="btn btn-info btn-sm" data-toggle="modal"
 								data-target="#modal-warning"
 								th:attr="data-target='#modal-warning'+${veiculos.id_veiculos }"><span
-									class="oi oi-circle-x" title="Remover" aria-hidden="true"></span></a>
+									class="oi oi-circle-x" title="Remover" aria-hidden="true"></span>
+								</a>
 								
 								<div class="modal modal-warning fade in"
 									th:id="modal-warning+${veiculos.id_veiculos}">
@@ -139,7 +144,6 @@
 													th:href="@{/adm/veiculos/remover/{id}(id=${veiculos.id_veiculos})}"><i
 													class="fa fa-check"></i>&nbsp;Sim</a>
 											</div> 
-											
 										</div>
 									</div>
 								</div>
@@ -149,8 +153,6 @@
 				</table>
 			</div>
 		</div>
-		
-		
 	</section>		
 	
 	</div>

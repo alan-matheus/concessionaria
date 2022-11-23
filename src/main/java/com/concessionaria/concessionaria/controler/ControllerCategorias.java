@@ -49,7 +49,7 @@ public class ControllerCategorias {
     }
     
     @RequestMapping (value = "/adm/categorias/remover/{id}", method = RequestMethod.GET)
-    public String deleteById(@PathVariable("id") int id, RedirectAttributes atributos){
+    public String deleteById(@PathVariable("id") long id, RedirectAttributes atributos){
         repository.deleteById(id);
         atributos.addFlashAttribute("mensagem", "deletado com sucesso");
 
@@ -57,7 +57,7 @@ public class ControllerCategorias {
     }
 
     @RequestMapping (value = "/adm/categorias/update/{id}", method = RequestMethod.GET)
-    public ModelAndView update(@PathVariable("id") int id){
+    public ModelAndView update(@PathVariable("id") long id){
         ModelAndView mv = new ModelAndView("adm/categorias/update");
         Optional<Categoria> categorias = repository.findById(id);
         mv.addObject("id_categoria", categorias.get().getId_categoria());
