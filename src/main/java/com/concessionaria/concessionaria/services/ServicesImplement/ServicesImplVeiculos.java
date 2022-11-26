@@ -13,7 +13,8 @@ public class ServicesImplVeiculos implements ServicesVeiculos {
     RepositoryVeiculos repository;
 
     @Override
-    public List<Veiculos> findaAll() {
+    public List<Veiculos> findAll() {
+        
         
         return repository.findAll();
     }
@@ -35,5 +36,13 @@ public class ServicesImplVeiculos implements ServicesVeiculos {
         
         return deleteById(id);
     }
+
+    @Override
+    public List<Veiculos> findVeiculosByModeloLike(String modelo) {
+        // TODO Auto-generated method stub
+        return repository.findVeiculosByModeloLike(modelo);
+    }
+
+    
     
 }

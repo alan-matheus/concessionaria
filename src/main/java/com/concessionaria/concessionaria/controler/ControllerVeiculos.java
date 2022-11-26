@@ -12,8 +12,10 @@ import javax.validation.Valid;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -193,5 +195,21 @@ public class ControllerVeiculos {
         return "redirect:/adm/veiculos/lista";
 
     }
+
+    
+
+    @RequestMapping (value = "/")
+    public String getVeiculosModelo(Model model, @Param("modelo") String modelo) {
+        
+        List <Veiculos> veiculos = repository.findVeiculosByModeloLike(modelo);
+
+        model.addAttribute("veiculos", veiculos);
+        model.addAttribute("modelo", modelo);
+
+        return "adm/veiculos/encontrado";
+    }
+
+
+
 }
 

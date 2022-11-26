@@ -99,6 +99,11 @@ body {
     margin-left: 10px;
 }
 
+
+.row {
+    margin-bottom: 30px;
+}
+
 /*
  * Footer
  */
