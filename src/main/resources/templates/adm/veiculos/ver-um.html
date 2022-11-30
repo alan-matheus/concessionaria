@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt" html xlmns:th="http://thymeleaf.org">
+<head>
+	<title>Loja Virtual com Spring MVC Spring Boot</title>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link rel="icon" href="/image/favicon.png" />
+
+	<!-- Bootstrap core CSS -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+	
+	<!-- Custom styles for this template -->
+	<link href="/css/style-adm.css" rel="stylesheet" />
+</head>
+<body>
+	<header>
+		<nav class="navbar navbar-inverse navbar navbar-dark bg-dark fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="btn btn-dark navbar-toggle pull-left">
+						<i class="oi oi-menu"></i>
+					</button>
+					<a class="navbar-brand " href="#">Painel Administrativo da Concessionária</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	<div class="layout-main">	
+	
+		<aside>
+			<nav class="sidebar sidebar-open">
+				<ul class="nav nav-pills">
+					<li class="nav-item"><a class="nav-link " href="/"> <i
+							class="oi oi-home"></i> <span>Home</span>
+					</a></li>
+				</ul>
+
+				<ul class="nav nav-pills">
+					<li class="nav-item"><span class="nav-link active">Veiculos</span></li>
+					<li class="nav-item"><a class="nav-link" 
+						href="cadastro"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" 
+						href="lista"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+					</a></li>
+				</ul>
+                <ul class="nav nav-pills">
+					<li class="nav-item"><span class="nav-link active">Categorias</span></li>
+					<li class="nav-item"><a class="nav-link" 
+						href="../categorias/cadastro"> <i class="oi oi-plus"></i> <span>Cadastrar </span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" 
+						href="../categorias/lista"> <i class="oi oi-spreadsheet"></i> <span>Listar </span>
+					</a></li>
+				</ul>
+			</nav>
+		</aside>
+			
+	<section class="layout-content">
+	
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<i class="oi oi-caret-right"></i>
+						<span>Home</span>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		
+		<div class="container">
+			
+			<h3 id="titulo">Informações sobre o veículo</h3>
+			
+             <section class="sobre" id="sobre"> 
+					
+                <div class="content">
+                    <div class="sobre-content">
+                        <div class="esquerda">
+                              <img width="300" th:src="@{../../img/{img}(img=${imagem})}" />  
+                        </div>
+                        <div class="direita">
+                            <ul>
+								<li>Placa: </li>
+                                <li th:text="${placa}" class="sem-list"> </li>
+								<li>Cor: </li>
+                                <li th:text="${cor}" class="sem-list"> </li>
+								<li> Marca: </li>  
+                                <li th:text="${marca}" class="sem-list"> </li>
+								<li>Modelo: </li>
+                                <li th:text="${modelo}" class="sem-list"> </li>
+								<li> Ano: </li>
+                                <li th:text="${ano}" class="sem-list" > </li>
+								<li>Valor: </li>
+                                <li th:text="${valor}" class="sem-list"> </li>
+                               	<li> Categoria: </li> 
+								<li th:text="${id_categoria.getNome()}" class="sem-list"> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section> 	 
+
+		</div>
+		
+	</section>		
+	
+	</div>
+		<footer class="layout-footer">
+		<div class="container">
+			<span class="footer-copy">&copy; 2018 MBallem. Todos os direitos reservados.</span>
+		</div>
+	</footer> 
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/webjars/jquery/jquery.min.js"></script>
+	<script src="/webjars/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	    
+		$(function() {
+			$('[data-toggle="popover"]').popover();
+		});
+		
+		$(document).ready(function(){
+		    $(".navbar-toggle").click(function(){
+		        $(".sidebar").toggleClass("sidebar-open");
+		    })
+		});
+
+	</script>
+</body>
+</html>
