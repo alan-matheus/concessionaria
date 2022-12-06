@@ -14,4 +14,8 @@ public interface RepositoryVeiculos extends JpaRepository<Veiculos, Long> {
     " CONCAT (v.modelo, v.ano) " + 
     " LIKE %?1%" ) 
     List<Veiculos> findVeiculosByModeloLike(String modelo);
+
+
+
+    
 }

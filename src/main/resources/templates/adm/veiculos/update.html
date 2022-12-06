@@ -137,9 +137,9 @@
 					</div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-							<label>Categoria</label> <select name="id_categoria"
-							class="form-control" id="id_categoria"> 
-							<option th:each="cat: ${categoria}" th:selected="${cat.id_categoria == id_categoria.getId_categoria()}" th:value="${cat.id_categoria}" th:text="${cat.nome}" ></option>
+							<label>Categoria</label> <select name="idCategoria"
+							class="form-control" id="idCategoria"> 
+							<option th:each="cat: ${categorias}" th:selected="${cat.id_categoria == idCategoria.getId_categoria()}" th:value="${cat.id_categoria}" th:text="${cat.nome}" ></option>
 							
 							</select>
 							<div class="invalid-feedback"></div>

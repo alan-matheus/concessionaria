@@ -77,10 +77,11 @@
 		<div class="container">
 
 			<div class="row">
+
 				<nav class="navbar navbar-light bg-light">
 							<form class="form-inline"  th:action="@{/}">
 								<input class="form-control mr-sm-2" type="text" name="modelo" id="modelo" th:value="${modelo}" placeholder="Pesquisar" required aria-label="Search"/>
-								<input type="submit" value="buscar" class="btn btn-outline-success my-2 my-sm-0"/>
+								<input type="submit" value="pesquisar" class="btn btn-outline-success my-2 my-sm-0"/>
 							</form>
 				</nav> 
 				<!-- <nav class="navbar navbar-light bg-light">
@@ -90,7 +91,24 @@
 						<button class="btn btn-outline-success my-2 my-sm-0">Pesquisar</button>
 					</form>
 				</nav> -->
-			</div>  
+			</div> 
+			
+			<div class="row">
+	                
+	            <nav class="navbar navbar-light bg-light categoria">
+	                    <li>Pesquise por categoria</a>
+							<ul>
+								<li><a href="#">Veículos de passeio</a></li>
+								<li><a href="#"></a></li>
+								
+							</ul>
+						</li>
+
+	            </nav>
+	
+	        </div>
+
+				<!-- <span action="/funcionarios/buscar/cargo"> </span>  -->
 			
 				
 
@@ -115,7 +133,7 @@
 							<td th:text="${veiculos.modelo}"></td>
 							<td th:text="${veiculos.ano}"></td>
 							<td th:text="${veiculos.valor}"></td>
-							<td th:text="${veiculos.id_categoria.getNome()}"></td>
+							<td th:text="${veiculos.idCategoria.getNome()}"></td>
 							
 							<td><img th:src="@{../../img/{img}(img=${veiculos.imagem})}" width="100"/></td> 
 

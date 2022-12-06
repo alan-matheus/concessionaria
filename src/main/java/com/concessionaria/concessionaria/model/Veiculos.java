@@ -36,8 +36,8 @@ public class Veiculos  {
 
     @NotNull
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
-    private Categoria id_categoria;
+    @JoinColumn(name = "idCategoria", referencedColumnName = "id_categoria")
+    private Categoria idCategoria;
 
     @NotNull
     private double valor;
@@ -101,12 +101,12 @@ public class Veiculos  {
         this.ano = ano;
     }
 
-    public Categoria getId_categoria() {
-        return id_categoria;
+    public Categoria getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setId_categoria(Categoria id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setIdCategoria(Categoria idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public double getValor() {
@@ -115,6 +115,9 @@ public class Veiculos  {
 
     public void setValor(double valor) {
         this.valor = valor;
+    }
+
+    public void setCategoria(Categoria idCategoria2) {
     }
     
 

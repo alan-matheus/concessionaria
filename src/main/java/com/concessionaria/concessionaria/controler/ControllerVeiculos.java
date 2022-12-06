@@ -51,8 +51,8 @@ public class ControllerVeiculos {
 	public ModelAndView getVeiculos() {
 		ModelAndView mv = new ModelAndView("adm/veiculos/lista");
 		List<Veiculos> veiculos = repository.findAll();
-		List<Categoria> categoria = repositoryCategoria.findAll();
-        mv.addObject("categoria", categoria);
+		List<Categoria> categorias = repositoryCategoria.findAll();
+        mv.addObject("categorias", categorias);
 		mv.addObject("veiculos", veiculos);
 		return mv;
 	}
@@ -67,7 +67,7 @@ public class ControllerVeiculos {
 		mv.addObject("modelo", veiculos.get().getModelo());
         mv.addObject("marca", veiculos.get().getMarca());
         mv.addObject("ano", veiculos.get().getAno());
-        mv.addObject("id_categoria", veiculos.get().getId_categoria());
+        mv.addObject("idCategoria", veiculos.get().getIdCategoria());
         mv.addObject("valor", veiculos.get().getValor());
         mv.addObject("imagem", veiculos.get().getImagem());
 
@@ -78,9 +78,9 @@ public class ControllerVeiculos {
     @RequestMapping(value = "adm/veiculos/cadastro", method = RequestMethod.GET)
     public ModelAndView save(Veiculos veiculos){
         ModelAndView mv = new ModelAndView("adm/veiculos/cadastro");
-        List<Categoria> categoria = repositoryCategoria.findAll();
+        List<Categoria> categorias = repositoryCategoria.findAll();
         mv.addObject("veiculos", veiculos);
-        mv.addObject("categoria", categoria);
+        mv.addObject("categorias", categorias);
         
         return mv;
     }
@@ -120,15 +120,15 @@ public class ControllerVeiculos {
     public ModelAndView update(@PathVariable("id") long id){
         ModelAndView mv = new ModelAndView("/adm/veiculos/update");
         Optional<Veiculos> veiculos = repository.findById(id);
-        List<Categoria> categoria = repositoryCategoria.findAll();
-        mv.addObject("categoria", categoria);
+        List<Categoria> categorias = repositoryCategoria.findAll();
+        mv.addObject("categorias", categorias);
         mv.addObject("id_veiculos", veiculos.get().getId_veiculos());
         mv.addObject("placa", veiculos.get().getPlaca());
         mv.addObject("cor", veiculos.get().getCor());
         mv.addObject("marca", veiculos.get().getMarca());
         mv.addObject("modelo", veiculos.get().getModelo());
         mv.addObject("ano", veiculos.get().getAno());
-        mv.addObject("id_categoria", veiculos.get().getId_categoria());
+        mv.addObject("idCategoria", veiculos.get().getIdCategoria());
         mv.addObject("valor", veiculos.get().getValor());
         
         return mv;
@@ -143,7 +143,7 @@ public class ControllerVeiculos {
         carregando.setMarca(veiculos.getMarca());
         carregando.setModelo(veiculos.getModelo());
         carregando.setAno(veiculos.getAno());
-        carregando.setId_categoria(veiculos.getId_categoria());
+        carregando.setIdCategoria(veiculos.getIdCategoria());
         carregando.setValor(veiculos.getValor());
 
         repository.save(carregando); 
