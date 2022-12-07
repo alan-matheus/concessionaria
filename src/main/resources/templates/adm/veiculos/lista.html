@@ -94,19 +94,26 @@
 			</div> 
 			
 			<div class="row">
+	        	<div class="col">
 	                
-	            <nav class="navbar navbar-light bg-light categoria">
-	                    <li>Pesquise por categoria</a>
-							<ul>
-								<li><a href="#">Veículos de passeio</a></li>
-								<li><a href="#"></a></li>
-								
-							</ul>
-						</li>
+						<nav class="navbar navbar-light bg-light">
+	                        <!-- <form class="form-inline" method="post" th:action="@{/adm/veiculos/encontrado/}">
+	                            <select class="form-control mr-sm-2" name="idCategoria" aria-label="Search">
+	                            	
+	                            	<option th:each="cat: ${categorias}" th:value="${cat.id_categoria}" th:text="${cat.nome}"></option>
+	                            </select>
+	                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">pesquisar</button>
+	                        </form> -->
+							<ul class="menu">
+								<li th:each="cat: ${categorias}" >
+									<a th:text="${cat.nome}" th:href="@{/adm/veiculos/encontrado/{idCategoria}(idCategoria = ${cat.id_categoria})}"></a>
 
-	            </nav>
-	
-	        </div>
+								</li>
+							</ul>
+	                    </nav>
+					
+	            </div>
+	    	</div>
 
 				<!-- <span action="/funcionarios/buscar/cargo"> </span>  -->
 			
@@ -134,7 +141,6 @@
 							<td th:text="${veiculos.ano}"></td>
 							<td th:text="${veiculos.valor}"></td>
 							<td th:text="${veiculos.idCategoria.getNome()}"></td>
-							
 							<td><img th:src="@{../../img/{img}(img=${veiculos.imagem})}" width="100"/></td> 
 
 							<td>

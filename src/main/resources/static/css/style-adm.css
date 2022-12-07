@@ -82,6 +82,25 @@ body {
     width: 300px;
 }
 
+/* menuzinho categorias*/
+ul.menu {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+
+}
+
+ul.menu li a{
+    padding: 10px;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+ul.menu li a:hover{
+    color: #777777;
+}
+
+
 /*
  * nav-pills home
  */
@@ -114,7 +133,7 @@ body {
 
 li {
     font: normal 1.1em;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
    
 
 }

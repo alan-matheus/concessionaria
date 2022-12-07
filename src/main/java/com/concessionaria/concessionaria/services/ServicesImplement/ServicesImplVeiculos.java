@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.concessionaria.concessionaria.model.Categoria;
 import com.concessionaria.concessionaria.model.Veiculos;
 import com.concessionaria.concessionaria.repository.RepositoryVeiculos;
 import com.concessionaria.concessionaria.services.ServicesVeiculos;
@@ -14,26 +15,25 @@ public class ServicesImplVeiculos implements ServicesVeiculos {
 
     @Override
     public List<Veiculos> findAll() {
-        
-        
+
         return repository.findAll();
     }
 
     @Override
     public Veiculos findById(long id) {
-        
+
         return repository.findById(id).get();
     }
 
     @Override
     public Veiculos save(Veiculos veiculos) {
-        
+
         return repository.save(veiculos);
     }
 
     @Override
     public Veiculos deleteById(long id) {
-        
+
         return deleteById(id);
     }
 
@@ -43,8 +43,10 @@ public class ServicesImplVeiculos implements ServicesVeiculos {
         return repository.findVeiculosByModeloLike(modelo);
     }
 
-  
+    @Override
+    public List<Veiculos> findVeiculosByIdCategoria(Categoria idCategoria) {
+        // TODO Auto-generated method stub
+        return repository.findVeiculosByIdCategoria(idCategoria);
+    }
 
-    
-    
 }
