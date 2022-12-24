@@ -205,10 +205,10 @@ public class ControllerVeiculos {
 
     }
 
-    @RequestMapping(value = "adm/veiculos/encontrado/{idCategoria}", method = RequestMethod.GET)
+    @RequestMapping(value = "adm/veiculos/encontrado-categoria/{idCategoria}", method = RequestMethod.GET)
     public ModelAndView getVeiculoByCategoria(@PathVariable("idCategoria") long idCategoria) {
         Optional<Categoria> categoria = repositoryCategoria.findById(idCategoria);
-        ModelAndView mv = new ModelAndView("/adm/veiculos/encontrado");
+        ModelAndView mv = new ModelAndView("/adm/veiculos/encontrado-categoria");
         List<Veiculos> veiculos = repository.findVeiculosByIdCategoria(categoria.get());
         mv.addObject("veiculos", veiculos);
         return mv;
